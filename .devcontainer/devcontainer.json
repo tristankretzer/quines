@@ -1,0 +1,6 @@
+{
+  "name": "quines",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/quines,type=bind,relabel=private",
+  "workspaceFolder": "/workspaces/quines"
+}
