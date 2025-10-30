@@ -2,5 +2,11 @@
   "name": "quines",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/quines,type=bind,relabel=private",
-  "workspaceFolder": "/workspaces/quines"
+  "workspaceFolder": "/workspaces/quines",
+  "features": {
+    "ghcr.io/devcontainers/features/php:1": {
+      "installComposer": false,
+      "version": "8.4"
+    }
+  }
 }
