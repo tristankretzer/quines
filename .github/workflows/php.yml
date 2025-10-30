@@ -1,0 +1,36 @@
+name: Test PHP quine
+
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - '.github/workflows/php.yml'
+      - 'php/quine.php'
+  pull_request:
+    branches:
+      - 'master'
+    paths:
+      - '.github/workflows/php.yml'
+      - 'php/*'
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.0', '8.1', '8.2', '8.3', '8.4']
+
+    name: PHP ${{ matrix.php-version }}
+
+    container: php:${{ matrix.php-version }}-cli
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check if file is quine
+        run: |
+          php php/quine.php > php/result.php
+          diff php/quine.php php/result.php
